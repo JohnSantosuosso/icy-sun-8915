@@ -1,0 +1,8 @@
+<h1>Employee Information</h1>
+<div id="employee-<%= @employee.id %>">
+  <h2><%= @employee.name %></h2>
+  <p>Department: <%= @employee.department.name %></p>
+  <p>Tickets: <%= @employee.sort_tickets_asc.each do |ticket| %></p>
+    <%= ticket.subject %>
+  <% end %></p>
+</div>

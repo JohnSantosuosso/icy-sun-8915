@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Departments', type: :feature do
   describe 'index' do
-    it 'should show all departments' do
+    it 'should show all departments and their employees' do
       department_1 = Department.create(name: 'IT')
       department_2 = Department.create(name: 'Accounting')
 
