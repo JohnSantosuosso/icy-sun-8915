@@ -6,3 +6,7 @@
     <%= ticket.subject %>
   <% end %></p>
 </div>
+
+<div id="ticket-<%= @employee.id %>">
+<h3>Oldest Ticket: <%=@employee.find_oldest_ticket %></h3>
+</div>

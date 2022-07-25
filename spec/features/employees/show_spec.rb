@@ -47,5 +47,29 @@ RSpec.describe 'Employees Show', type: :feature do
       end
 
     end
+
+     it 'should see the oldest ticket assigned to the employee listed separately' do
+      department_1 = Department.create(name: 'IT')
+
+
+      employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
+
+      ticket_1 = Ticket.create(subject: 'Broken Printer', age: 1)
+      ticket_2 = Ticket.create(subject: 'Broken Laptop', age: 2)
+      ticket_3 = Ticket.create(subject: 'Broken Keyboard', age: 3)
+      ticket_4 = Ticket.create(subject: 'Broken Monitor', age: 4)
+
+      employee_ticket_1 = EmployeeTicket.create(employee_id: employee_1.id, ticket_id: ticket_1.id)
+      employee_ticket_2 = EmployeeTicket.create(employee_id: employee_1.id, ticket_id: ticket_2.id)
+      employee_ticket_3 = EmployeeTicket.create(employee_id: employee_1.id, ticket_id: ticket_3.id)
+
+      visit "/employees/#{employee_1.id}"
+
+      within("#ticket-#{employee_1.id}") do
+        expect(page).to have_content('Broken Printer')
+        expect(page).to have_no_content('Broken Laptop')
+        expect(page).to have_no_content('Broken Keyboard')
+      end
+    end
   end
 end
