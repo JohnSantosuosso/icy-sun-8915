@@ -3,11 +3,11 @@ class Employee < ApplicationRecord
   has_many :employee_tickets
   has_many :tickets, through: :employee_tickets
 
-  def sort_tickets_asc
-    tickets.order(:age)
+  def sort_tickets_desc
+    tickets.order(age: :desc)
   end
 
   def find_oldest_ticket
-    tickets.order(:age).first
+    tickets.order(age: :desc).first
   end
 end

@@ -2,11 +2,20 @@
 <div id="employee-<%= @employee.id %>">
   <h2><%= @employee.name %></h2>
   <p>Department: <%= @employee.department.name %></p>
-  <p>Tickets: <%= @employee.sort_tickets_asc.each do |ticket| %></p>
+  <p>Tickets: <% @employee.sort_tickets_desc.each do |ticket| %></p>
     <%= ticket.subject %>
   <% end %></p>
 </div>
 
 <div id="ticket-<%= @employee.id %>">
-<h3>Oldest Ticket: <%=@employee.find_oldest_ticket %></h3>
+<h3>Oldest Ticket: <%= @employee.find_oldest_ticket %></h3>
 </div>
+
+<div id="form-<%=@employee.id %>">
+<h3>Add Ticket to Employee</h3>
+<%= form_with url: "/employees/#{@employee.id}", method: :patch, local: true do |f| %>
+  <%=f.label :ticket_id %>
+  <%=f.text_field :ticket_id %>
+  <%=f.submit "Submit"%>
+<% end %>
+ 
