@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Employees Show', type: :feature do
   describe 'show' do
     it 'should show the employees name and department' do
-      department_1 = Department.create(name: 'IT')
-      department_2 = Department.create(name: 'HR')
+      department_1 = Department.create(name: 'IT', floor: 1)
+      department_2 = Department.create(name: 'HR', floor: 2)
 
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
       employee_2 = Employee.create(name: 'Jane', level: 2, department_id: department_1.id)
@@ -21,7 +21,7 @@ RSpec.describe 'Employees Show', type: :feature do
     end
 
     it 'should show the employees tickets sorted by oldest' do
-      department_1 = Department.create(name: 'IT')
+      department_1 = Department.create(name: 'IT', floor: 1)
 
 
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
@@ -51,7 +51,7 @@ RSpec.describe 'Employees Show', type: :feature do
     end
 
     it 'should see the oldest ticket assigned to the employee listed separately' do
-      department_1 = Department.create(name: 'IT')
+      department_1 = Department.create(name: 'IT', floor: 1)
 
 
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
@@ -75,7 +75,7 @@ RSpec.describe 'Employees Show', type: :feature do
     end
 
     it 'provide a form to add a ticket to an employee' do
-      department_1 = Department.create(name: 'IT')
+      department_1 = Department.create(name: 'IT', floor: 1)
 
 
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)

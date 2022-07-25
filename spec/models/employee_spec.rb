@@ -13,7 +13,7 @@ RSpec.describe Employee, type: :model do
 
   describe 'instance methods' do
     it 'should sort tickets by oldest' do
-      department_1 = Department.create(name: 'IT')
+      department_1 = Department.create(name: 'IT', floor: 1)
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
       ticket_1 = Ticket.create(subject: 'Broken Printer', age: 1)
       ticket_2 = Ticket.create(subject: 'Broken Laptop', age: 2)
@@ -27,7 +27,7 @@ RSpec.describe Employee, type: :model do
     end
 
       it 'find the oldest ticket' do
-        department_1 = Department.create(name: 'IT')
+        department_1 = Department.create(name: 'IT', floor: 1)
         employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
         ticket_1 = Ticket.create(subject: 'Broken Printer', age: 1)
         ticket_2 = Ticket.create(subject: 'Broken Laptop', age: 2)

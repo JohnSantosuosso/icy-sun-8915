@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'Departments', type: :feature do
   describe 'index' do
     it 'should show all departments and their employees' do
-      department_1 = Department.create(name: 'IT')
-      department_2 = Department.create(name: 'Accounting')
+      department_1 = Department.create(name: 'IT', floor: 1)
+      department_2 = Department.create(name: 'Accounting', floor: 2)
 
       employee_1 = Employee.create(name: 'John', level: 3, department_id: department_1.id)
       employee_2 = Employee.create(name: 'Jane', level: 2, department_id: department_1.id)
