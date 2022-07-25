@@ -8,6 +8,6 @@ class Employee < ApplicationRecord
   end
 
   def find_oldest_ticket
-    tickets.order(age: :desc).first
+    tickets.order(age: :desc).pluck(:subject).first
   end
 end
